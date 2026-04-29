@@ -1,0 +1,68 @@
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.etiqueta {
+  font-size: 13px;
+  font-weight: 700;
+  color: #0a2a46;
+}
+
+.requerido {
+  color: #b42318;
+}
+
+.contenedorInput {
+  position: relative;
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  border-radius: 12px;
+  background: #f8fafc;
+  display: flex;
+  align-items: center;
+  transition: border-color 120ms ease, box-shadow 120ms ease, background-color 120ms ease;
+}
+
+.contenedorInput:focus-within {
+  border-color: rgba(11, 58, 99, 0.45);
+  box-shadow: 0 0 0 4px rgba(11, 58, 99, 0.12);
+  background: #ffffff;
+}
+
+.conError {
+  border-color: rgba(180, 35, 24, 0.5);
+  box-shadow: 0 0 0 4px rgba(180, 35, 24, 0.12);
+  background: #fffafa;
+}
+
+.input {
+  width: 100%;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  padding: 12px 14px;
+  font-size: 14px;
+  color: #0f172a;
+}
+
+.input::placeholder {
+  color: rgba(15, 23, 42, 0.45);
+}
+
+.derecha {
+  display: inline-flex;
+  align-items: center;
+  padding-right: 10px;
+}
+
+.descripcion {
+  font-size: 12px;
+  color: rgba(15, 23, 42, 0.64);
+}
+
+.error {
+  font-size: 12px;
+  color: #b42318;
+}
+
