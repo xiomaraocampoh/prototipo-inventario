@@ -14,6 +14,8 @@ import {
   Truck,
   Users,
   X,
+  UserCircle,
+  FileText
 } from 'lucide-react';
 
 export const NAV = [
@@ -22,6 +24,8 @@ export const NAV = [
   { href: '/despacho', label: 'Despacho', icon: Truck },
   { href: '/inventario', label: 'Inventario', icon: Boxes },
   { href: '/usuarios', label: 'Usuarios', icon: Users },
+  { href: '/clientes', label: 'Clientes', icon: UserCircle },
+  { href: '/auditoria', label: 'Auditoría', icon: FileText },
 ];
 
 function LogoMark() {
@@ -111,11 +115,10 @@ export function StocklyAppShell({ children }) {
                   <Link
                     href={href}
                     onClick={() => setMobileNavOpen(false)}
-                    className={`flex min-h-[2.75rem] flex-row flex-wrap items-center gap-4 rounded-lg px-4 py-3 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 focus-visible:ring-offset-2 focus-visible:ring-offset-blue-800 ${
-                      active
+                    className={`flex min-h-[2.75rem] flex-row flex-wrap items-center gap-4 rounded-lg px-4 py-3 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 focus-visible:ring-offset-2 focus-visible:ring-offset-blue-800 ${active
                         ? 'bg-sky-500 text-white shadow-sm'
                         : 'text-blue-100 hover:bg-blue-900 hover:text-white'
-                    }`}
+                      }`}
                   >
                     <Icon className="h-[1.125rem] w-[1.125rem] shrink-0" strokeWidth={2} aria-hidden />
                     <span className="min-w-0 flex-1 break-words">{label}</span>
