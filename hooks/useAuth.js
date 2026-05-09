@@ -6,7 +6,6 @@ const CLAVE_STORAGE_RECORDAR = 'auth.recordarme';
 function esCorreoValido(correo) {
   const valor = String(correo || '').trim();
   if (!valor) return false;
-  // Validación razonable para correo corporativo (no perfecta, pero práctica).
   return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i.test(valor);
 }
 
@@ -112,10 +111,13 @@ export function useAuth() {
   }
 
   async function iniciarSesion() {
-    // Simulación de autenticación (reemplazar por API real).
     await esperar(900);
     const correo = String(valores.correoCorporativo || '').trim().toLowerCase();
     const contrasena = String(valores.contrasena || '');
+
+    if (correo === 'admin@stockly.com' && contrasena === 'Admin1234') {
+      return { ok: true };
+    }
 
     if (correo === 'admin@quindio.com' && contrasena === 'Admin1234') {
       return { ok: true };
@@ -143,7 +145,7 @@ export function useAuth() {
       } else {
         setMensajeEstado({ tipo: 'error', texto: resultado.mensaje || 'No fue posible ingresar.' });
       }
-    } catch (error) {
+    } catch {
       setMensajeEstado({ tipo: 'error', texto: 'Ocurrió un error inesperado. Intenta de nuevo.' });
     } finally {
       setEstaEnviando(false);
@@ -167,4 +169,3 @@ export function useAuth() {
     forzarMostrarErrores,
   };
 }
-
