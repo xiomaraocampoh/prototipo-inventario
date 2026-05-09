@@ -61,5 +61,22 @@ export function useProductosSimulados() {
     );
   }, []);
 
-  return { productos, setProductos, registrarProducto, descontarSalida };
+  const registrarEntrada = useCallback((productoId, ubicacion, cantidad) => {
+    const c = Math.max(0, Math.floor(cantidad));
+    if (c < 1) return;
+    setProductos((lista) =>
+      lista.map((p) => {
+        if (p.id !== productoId) return p;
+        if (ubicacion === 'Bodega') {
+          return { ...p, stockBodega: (p.stockBodega ?? 0) + c };
+        }
+        if (ubicacion === 'Vitrina') {
+          return { ...p, stockVitrina: (p.stockVitrina ?? 0) + c };
+        }
+        return p;
+      })
+    );
+  }, []);
+
+  return { productos, setProductos, registrarProducto, descontarSalida, registrarEntrada };
 }
