@@ -57,7 +57,8 @@ export function ProductoRegistrarFormulario({ onRegistrar }) {
       categoria: form.categoria,
       refrigeracion: Boolean(form.refrigeracion),
       fechaVencimiento: form.fechaVencimiento,
-      stock,
+      stockBodega: stock,
+      stockVitrina: 0,
       stockMinimo,
       codigoSerial: esElectro ? form.codigoSerial.trim() : null,
     });

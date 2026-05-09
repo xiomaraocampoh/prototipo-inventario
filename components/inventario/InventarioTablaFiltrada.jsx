@@ -1,6 +1,7 @@
 'use client';
 
 import { CATEGORIA_ELECTROTERAPIA, CATEGORIAS_INSUMO } from '../../lib/inventarioCategorias';
+import { stockTotal } from '../../lib/stocklyInventarioSimulado';
 
 /** @param {{ productos: object[], filtroCategoria: string, onFiltroChange: (c: string) => void }} props */
 export function InventarioTablaFiltrada({ productos, filtroCategoria, onFiltroChange }) {
@@ -83,7 +84,8 @@ export function InventarioTablaFiltrada({ productos, filtroCategoria, onFiltroCh
               </tr>
             ) : (
               filas.map((p) => {
-                const bajoMinimo = p.stock <= p.stockMinimo;
+                const total = stockTotal(p);
+                const bajoMinimo = total <= p.stockMinimo;
                 return (
                   <tr key={p.id} className="hover:bg-slate-50">
                     <td className="max-w-[8rem] px-6 py-4 align-top">
@@ -116,7 +118,7 @@ export function InventarioTablaFiltrada({ productos, filtroCategoria, onFiltroCh
                     </td>
                     <td className="whitespace-nowrap px-6 py-4 align-top tabular-nums text-slate-600">{formatearFecha(p.fechaVencimiento)}</td>
                     <td className="whitespace-nowrap px-6 py-4 align-top tabular-nums font-semibold text-slate-700">
-                      <span className={bajoMinimo ? 'text-amber-700' : undefined}>{p.stock}</span>
+                      <span className={bajoMinimo ? 'text-amber-700' : undefined}>{total}</span>
                     </td>
                     <td className="whitespace-nowrap px-6 py-4 align-top tabular-nums text-slate-600">{p.stockMinimo}</td>
                   </tr>
